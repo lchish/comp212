@@ -1,4 +1,0 @@
-<?php
-require 'private/session.php';
-require 'private/config.php';
-?>
