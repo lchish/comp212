@@ -1,0 +1,11 @@
+CREATE TABLE pending(username CHAR(32) NOT NULL,FOREIGN KEY(username) REFERENCES users(username),passhash CHAR(32) NOT NULL,administrator TINYINT(1) NOT NULL, blocked TINYINT(1) NOT NULL,sex TINYINT(1) NOT NULL,firstname CHAR(32) NOT NULL,lastname CHAR(32) NOT NULL, email CHAR(32) NOT NULL,address CHAR(32) NOT NULL, suburb CHAR(32),postcode CHAR(4), city CHAR(32) NOT NULL, phone CHAR(32) NOT NULL,dateofcreation CHAR(32) NOT NULL);
+
+CREATE TABLE userinfo(username CHAR(32) NOT NULL,FOREIGN KEY(username) REFERENCES users(username),sex TINYINT(1) NOT NULL,firstname CHAR(32) NOT NULL,lastname CHAR(32) NOT NULL, email CHAR(32) NOT NULL,address CHAR(32) NOT NULL, suburb CHAR(32),postcode CHAR(4), city CHAR(32) NOT NULL, phone CHAR(32) NOT NULL);
+
+CREATE TABLE users(username CHAR(32) NOT NULL,passhash char(40) NOT NULL,administrator TINYINT(1) NOT NULL, blocked TINYINT(1) NOT NULL);
+
+CREATE TABLE auctions(auction_number INT(4) NOT NULL AUTO_INCREMENT,title CHAR(32) NOT NULL,area CHAR(32) NOT NULL,category CHAR(32) NOT NULL, content TEXT(1000),reserve INT(6) NOT NULL,reserve_met TINYINT(1) NOT NULL,highest_bid INT(6),highest_bidder CHAR(32),seller_username CHAR(32) NOT NULL,closing_time CHAR(32) NOT NULL,primary key(auction_number));
+
+CREATE TABLE auction_images(auction_number INT(4) NOT NULL,image_number INT(2) NOT NULL AUTO_INCREMENT,name CHAR(32) NOT NULL,primary key(auction_number,image_number));
+
+CREATE TABLE auction_bidders(auction_number INT(4) NOT NULL,name CHAR(32) NOT NULL, bid INT(6) NOT NULL,primary key(auction_number));

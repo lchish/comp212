@@ -1,0 +1,71 @@
+h2{
+    text-align:center;
+}
+.auctionimages{
+    float:right;
+    width:auto;
+    margin:0em .5em .5em .5em;
+}
+.auctioncontent{
+    margin:1em 0;
+    width:100%;
+    float:left;
+}
+.flag{
+    margin-left:1em;
+}
+#reserve{
+    margin-left:1.2em;
+    margin-right:1em;
+}
+#bidbar{
+    clear:left;
+    margin-top:.5em;
+}
+#bidbutton{
+    width: 130px;
+    height: 21px;
+    background: url(images/bid-button.png) top left no-repeat;
+    border: 0px solid black;
+    text-indent: -200em;
+    margin-left:.75em;
+}
+#bidbutton:hover{
+    background-position: 0px -21px;
+}
+#auctionerror{
+    margin:.1em 0 0  0;
+    font-size: 1.5em;
+    font-weight:bold;
+}
+.historyrow{
+    text-align:center;
+}
+#bidhistory{
+    margin-bottom:5em;
+}
+.arrow{
+    margin-top:5px;
+    width:34px;
+    height:39px;
+    cursor:pointer;
+}
+#leftarrow{
+    float:left;
+    margin-left:3em;
+ }
+#rightarrow{
+    float:right;
+    margin-right:5em;
+}
+#auctionimage{
+
+    width:250px;
+    height:250px;
+}
+#closing{
+    clear:left;
+    font-size:8pt;
+    color: grey;
+    text-align:center;
+}

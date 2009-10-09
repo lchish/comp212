@@ -1,0 +1,179 @@
+/*global css for sell it*/
+body{
+    font-family: verdana, Arial, sans-serif;
+    width:80%;
+    margin:0 auto;
+    text-align:justify;
+    background-color:#F3F3F3;
+}
+
+img{
+    border-style: none;
+}
+#bodydiv{
+    margin-top:1em;
+    padding-top:1em;
+    padding-left:1em;
+    position:absolute;
+    width:80%;
+    background-color:#FFFFFF;
+    min-height:85%;
+}
+#topnavbar{
+    width:80%;
+    padding-left:10%
+}
+#titleimg{
+    float:left;
+    width:300px;
+    height:70px;
+}
+#sidenavbar{
+    clear:left;
+    width:10%;
+    float:left;
+}
+#greeting{
+    float:left;
+    margin-top:2em;
+    margin-left:2em;
+}
+#loginform{
+    width:5%;
+}
+.createAccount{
+    font-weight:bold;
+}
+#content{
+    float:left;
+    margin-left:2em;
+    /*margin-top:1em;*/
+    width:75%;
+}
+#home{
+    margin-left:0;
+    clear:left;
+}
+.toplinks{
+    float:left;
+    margin-left:.5em;
+    list-style-type: none;
+}
+li{
+    height:2em;
+    width:auto;
+    margin-left:.5em;
+    float:left;
+    font-size:0.875em;
+}
+.buying{
+    width:auto;
+    float:left;
+}
+.auctionparagraphlink{
+    margin:0px;
+    float:left;
+    width:20em;
+}
+.auctionimage{
+    width:115px;
+    float:left;
+    height:86px;
+}
+
+.auctiontext{
+    font-size:1.1em;
+    /*height:28px;*/
+    width:50%;
+    float:left;
+    margin-left:1em;
+}
+hr{
+    width:100%;
+}
+.auctions{
+    clear:left;
+    padding: 2px;
+    height:88px;
+    margin-bottom:10px;
+    width:100%;
+    border:2px solid #D3D3D3;
+}
+.area{
+    /*height:28px;*/
+    clear:left;
+}
+.closingsoon{
+    margin:0;
+    /*height:28px;*/
+    clear:left;
+    color:red;
+}
+.closinglater{
+    margin:0;
+    /*height:28px;*/
+    clear:left;
+}
+.price{
+    float:right;
+}
+.bids{
+    clear:right;
+    float:right;
+    font-weight: bold;
+}
+.reserve{
+    margin-left:.25em;
+    margin-top:.75em;
+    /*clear:right;*/
+    float:right;
+}
+#categorieslist{
+    width:auto;
+    list-style-type: circle;
+    margin-bottom:2em;
+}
+#categoriesdiv{
+    position:relative;
+    height:7.5em;    
+    margin-bottom:1em;
+}
+#loginbutton{
+    width: 94px;
+    height: 26px;
+    background: url(images/login-button.png) top left no-repeat;
+    border: 0px solid black;
+    text-indent: -200em;
+}
+#loginbutton:hover{
+    background-position: 0px -26px;
+}
+.login{
+    width:8em;
+}
+#editdetails{
+    text-align:left;    
+}
+#mandatory{
+    width:50%;
+}
+.categoriesli{
+    text-align:left;
+    width:8.5em;
+    height:2.5em;
+    margin-bottom:.5em;
+    /*clear:both;*/
+}
+#sideul{
+    padding-left:0px;
+    margin-left:0px;
+    text-align:left;
+    list-style-type:none;
+}
+.sideli{
+    clear:both;
+    text-align:left;
+    padding-left:0px;
+    margin:2px 0px;
+    height:3em;
+}

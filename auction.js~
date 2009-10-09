@@ -1,0 +1,83 @@
+var currentImageNumber = 0;
+var imageDir = "/~leslie/assign2/auctionimages/";
+function setup()
+{
+    var leftButton = document.getElementById("leftarrow");
+    var rightButton = document.getElementById("rightarrow");
+    leftButton.onclick = function(){
+	startRequest(--currentImageNumber);
+    }
+    rightButton.onclick = function(){
+	startRequest(++currentImageNumber);
+    }
+}
+function startRequest(imageNumber){
+    var auctionNumber = 7;
+    //alert(imageNumber);
+    $.ajax({
+	type: "GET",
+	url: "getimage.php",
+	dataType : "text",
+	data: "img=" + imageNumber + "&auction=" + auctionNumber,
+	success: function(imageLocation){
+
+	    if(imageLocation.length == 1){
+		currentImageNumber = imageLocation -1;
+		imageLocation = imageDir+auctionNumber+"_"+currentImageNumber+".jpg";
+	    }else if(imageLocation == "high"){
+		//alert("high");
+		currentImageNumber = 0;
+		imageLocation = imageDir+auctionNumber+"_0.jpg";
+	    }
+	    //currentImageNumber = imageLocation;//fix wrapping
+	    var image = document.getElementById("image");//easier to do in normal js
+	    image.src = imageLocation;
+	    //alert(imageLocation);
+	    image.onload = resizeImage(imageLocation);
+	    //$("#image").attr("source").(imageLocation);
+	}
+    });
+}
+function resizeImage(imageName){
+    //alert("resizing");
+    var img = new Image();
+    img.src = imageName;
+    var myImage = document.getElementById("image");
+    var width = img.width;
+    var height = img.height;
+    var target = 250;
+    var percentage;
+    if(width > height){
+	percentage = (target / width);
+    }else{
+	percentage = (target / height);
+    }
+    myImage.width = Math.round(width * percentage);
+    myImage.height = Math.round(height * percentage);
+}/*
+function moveImageForward()
+{
+    var myImage = document.getElementById("image");
+    currentIndex = (currentIndex +1);
+    if(currentIndex == galleryarray.length){
+	currentIndex = 0;
+    }
+    myImage.src = galleryarray[currentIndex];
+    resizeImage(galleryarray[currentIndex]);
+}
+
+function moveImageBackward()
+{
+    var myImage = document.getElementById("image");
+    currentIndex--;
+    if(currentIndex == -1){
+	currentIndex = galleryarray.length -1 ;
+    }
+    myImage.src = galleryarray[currentIndex];
+    resizeImage(galleryarray[currentIndex]);
+}*/
+
+if (document.getElementById)
+{
+    window.onload = setup;
+}

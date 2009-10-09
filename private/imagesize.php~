@@ -1,0 +1,19 @@
+<?php
+
+function imageResize($width, $height, $target) {
+
+if ($width > $height) {
+$percentage = ($target / $width);
+} else {
+$percentage = ($target / $height);
+}
+
+//gets the new value and applies the percentage, then rounds the value
+$width = round($width * $percentage);
+$height = round($height * $percentage);
+
+return "width=\"$width\" height=\"$height\"";
+
+}
+
+?>

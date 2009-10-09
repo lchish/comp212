@@ -1,0 +1,110 @@
+/*css for new user form*/
+
+#createaccountform{
+    width: 40em;
+}
+#createauctionform{
+    width: 40em;
+}
+.textlabel{
+    width:9em;
+    float:left;
+    margin-right:3px;
+    text-align:left;
+    clear:left;
+    
+}
+.filelabel{
+	width:auto;
+	float:left;
+	clear:left;
+}
+.fileupload{
+	margin-left:5px;
+}
+.textinput{
+    clear:left;
+    float:left;
+    width:auto;
+    /*margin-left:1em;*/
+}
+.dropdown{
+    float:left;
+	width:auto;
+	margin-top: 15px;
+	margin-bottom:15px;
+}
+#sex{
+    margin-right:3px;
+    clear:left;
+    float:left;
+    width:8.5em;
+
+}
+.contentbox{
+	margin-right:3px;
+	clear:left;
+	float:left;
+	width: 9em;
+}
+.radiolabel{   
+    margin-top:1em;
+    float:left;
+}
+.textarea{
+    clear:both;
+    margin-bottom:5px;
+    width:auto;
+}
+.textfield{
+    float:left;
+    font-size:100%;
+    margin-bottom:1em;
+    
+}
+.create{
+    display:block;
+    clear:left;
+    margin-top:1em;
+    margin-left:5em;
+    margin-bottom:5em;
+    width: 94px;
+    height: 26px;
+    background: url(images/create-button.png) top left no-repeat;
+    border: 0px solid black;
+    text-indent: -200em;
+}
+.create:hover{
+    background-position: 0px -26px;
+}
+.radiobutton{
+    float:left;
+    margin-top:1.5em;
+    margin-left:1em;
+    margin-right:1em;
+}
+.mandatoryStar{
+    color:red;
+}
+#mandatory{
+    clear:left;
+}
+.login{
+    width:8em;
+}
+#content{
+    /*margin-left:10em;*/
+}
+.error{
+    float:left;
+    color: #ff0000;
+    width:auto;
+}
+#sexerr{
+    margin-left:3.6em;
+    margin-top:.5em;
+}
+.dropdown{
+
+    width:17em;
+}
