@@ -75,8 +75,13 @@ if(isset($_GET['error'])){
 rows="10" cols="50" class="textarea">
 Enter important information about your auction here.</textarea>
 
-  <label for="reserve" class="textlabel">Reserve price:
-          <span class="mandatoryStar">*</span></label>
+ <label for="buynow" class="textlabel">Buy Now Price:
+<span class="dollarsign">$</span></label>
+          <input id="buynow" name="buynow"
+                 class="textfield" maxlength="32" size="20">
+
+  <label for="reserve" class="textlabel">Reserve price:<span class="mandatoryStar">*</span><span class="dollarsign">$</span></label>
+          
           <input id="reserve" name="reserve"
                  class="textfield" maxlength="32" size="20">
 	    <div id="reserveerr" class="error"></div>

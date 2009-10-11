@@ -33,6 +33,7 @@ $area = $row['area'];
 $category = $row['category'];
 $content = $row['content'];
 $reserve = $row['reserve'];
+$buynow = $row['buy_now'];
 $reserve_met = $row['reserve_met'];
 $highest_bid = $row['highest_bid'];
 $highest_bidder = $row['highest_bidder'];
@@ -70,11 +71,11 @@ echo "<h1 id=\"auctiontitle\">$title</h1>";
 //info bar containing current bid,and closing time
   echo "<div id=\"infobar\">";
 if($reserve_met == 0){
-  echo "<span>Start Price: \$$reserve</span>";
+  echo "<div class=\"pricing\">Start Price: \$$reserve</div>";
   echo "<span class=\"flag\"><img src=\"images/yellowflag.png\" alt=\"no reserve flag\"></span>";
   echo "<span id=\"reserve\">No reserve</span>";
  }else{
-  echo "<span>Highest Bid: \$$highest_bid</span>";
+  echo "<div class=\"pricing\">Highest Bid: \$$highest_bid</div>";
   echo "<span class=\"flag\"><img src=\"images/redflag.png\" alt=\"reserve met flag\"></span>";
     echo "<span id=\"reserve\">Reserve Met</span>";
 }
@@ -83,18 +84,26 @@ echo "</div>";//end infobar
 echo "<form action=\"bid.php\" method=\"post\">";
 echo "<div id=\"bidbar\">";
 if($reserve_met == 0){
-  echo "<span>Starting bid: $</span>";
+  echo "<div class=\"pricing\">Starting bid: $";
 }else{
-  echo "<span>Min next bid: $</span>";
+  echo "<div class=\"pricing\">Min next bid: $";
 }
 ?>
 
-<input id="bidinput" type="text" name="bid" value="<?php echo $reserve > $highest_bid ? $reserve : $highest_bid + 1;?>" size="4">
+<input id="bidinput" type="text" name="bid" value="<?php echo $reserve > $highest_bid ? $reserve : $highest_bid + 1;?>" size="4"></div>
 <input id="auctionnumber" type="hidden" name="auction_number" value="<?php echo $auction_number;?>">
 <input type="submit" id="bidbutton" value="click here to bid">
+
 </div><!-- //bidbar -->
 </form>
-
+<?php
+  if(isset($buynow)){
+    ?><form action="buynow.php" method="post">
+<div id="buynowbar"><span>Buy Now Price $<?php echo $buynow;?>
+    </span><input type="submit" value="BuyNow" id="buynowbutton">
+<input type="hidden" value=<?php echo $auction_number;?></div></form>
+<?php
+  }?>
 <?php
   if(isset($_GET['error'])){
     echo "<div id=\"auctionerror\">Error: ".$_GET['error']."</div>";

@@ -23,7 +23,7 @@ if(strlen($_POST['category']) >  0){
  }
 if(strlen($_POST['reserve']) > 0 && strlen($_POST['reserve']) < 7){
   $clean_reserve = mysql_real_escape_string($_POST['reserve']);
-$int_reserve = (int)$clean_reserve;
+  $int_reserve = (int)$clean_reserve;
 }else{
   $error = $error."Please enter a valid reserve price ";
 }
@@ -34,15 +34,26 @@ if(isset($_POST['content'])){
     $error = $error."content must be less than 1000 characters";
   }
 }
+if(isset($_POST['buynow'])){
+  if(strlen($_POST['buynow']) < 7 && strlen($_POST['buynow']) > 0){
+    $clean_buynow = mysql_real_escape_string($_POST['buynow']);
+    $int_buynow = (int)$clean_buynow;
+  }else{
+    $error = $error."Please enter a valid buynow price";
+  }
+}
 $username = $_SESSION['username'];
 if(strlen($error) > 0){
   header("Location: newauction.php?error=$error");
   exit();
 }
-mysql_query("INSERT INTO auctions(title,area,content,category,reserve,reserve_met,seller_username,closing_time)
-VALUES('$clean_title','$clean_area','$clean_content','$clean_category','$int_reserve',0,'$username',
-ADDTIME(NOW(),'7 0:0:0'))",$connection);
-$auction_query = "select auction_number from auctions order by auction_number DESC";//find the auction number
+mysql_query("INSERT INTO auctions(title,area,content,category,reserve,
+buy_now,reserve_met,seller_username,closing_time)
+VALUES('$clean_title','$clean_area','$clean_content','$clean_category',
+'$int_reserve','$int_buynow',0,'$username',ADDTIME(NOW(),'7 0:0:0'))",
+$connection);
+$auction_query = "SELECT auction_number FROM auctions 
+ORDER BY auction_number DESC";//find the auction number
 $auction_result = mysql_query($auction_query,$connection);
 $auction_row = mysql_fetch_array($auction_result);
 $auction_number =  $auction_row['auction_number'];

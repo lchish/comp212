@@ -11,9 +11,7 @@ h2{
     width:100%;
     float:left;
 }
-.flag{
-    margin-left:1em;
-}
+
 #reserve{
     margin-left:1.2em;
     margin-right:1em;
@@ -28,7 +26,17 @@ h2{
     background: url(images/bid-button.png) top left no-repeat;
     border: 0px solid black;
     text-indent: -200em;
-    margin-left:.75em;
+}
+#buynowbutton{
+    margin-left:16em;
+    width: 124px;
+    height: 25px;
+    background: url(images/buynow-button.png) top left no-repeat;
+    border: 0px solid black;
+    text-indent: -200em;
+}
+#buynowbutton:hover{
+    background-position: 0px -25px;
 }
 #bidbutton:hover{
     background-position: 0px -21px;
@@ -68,4 +76,8 @@ h2{
     font-size:8pt;
     color: grey;
     text-align:center;
+}
+.pricing{
+    float:left;
+    width:12em;
 }
