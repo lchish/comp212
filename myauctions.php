@@ -40,6 +40,11 @@ if(mysql_num_rows($result) > 0){
     echo "<span class = \"\"><a href=\"deleteauction.php?id=$num\"id=$num\">Delete auction</a></span></li>";
   }
   echo "</ul>";
+}else{
+?>
+  <p>You do not have any autions running at the moment</p>
+  <p><a href="newauction.php" >Would you like to start one</a></p>
+<?php
 }
 ?>
 </div>

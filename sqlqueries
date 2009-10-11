@@ -6,6 +6,6 @@ CREATE TABLE users(username CHAR(32) NOT NULL,passhash char(40) NOT NULL,adminis
 
 CREATE TABLE auctions(auction_number INT(4) NOT NULL AUTO_INCREMENT,title CHAR(32) NOT NULL,area CHAR(32) NOT NULL,category CHAR(32) NOT NULL, content TEXT(1000),reserve INT(6) NOT NULL,reserve_met TINYINT(1) NOT NULL,highest_bid INT(6),highest_bidder CHAR(32),seller_username CHAR(32) NOT NULL,closing_time CHAR(32) NOT NULL,primary key(auction_number));
 
-CREATE TABLE auction_images(auction_number INT(4) NOT NULL,image_number INT(2) NOT NULL AUTO_INCREMENT,name CHAR(32) NOT NULL,primary key(auction_number,image_number));
+CREATE TABLE auction_images(auction_number INT(4) NOT NULL,image_number INT(2) NOT NULL AUTO_INCREMENT,name CHAR(32) NOT NULL);
 
 CREATE TABLE auction_bidders(auction_number INT(4) NOT NULL,name CHAR(32) NOT NULL, bid INT(6) NOT NULL,primary key(auction_number));

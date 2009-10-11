@@ -18,7 +18,8 @@ if(strlen($_GET['c']) > 0){
   header("Locatoin: index.php");
   exit();
 }
-$query = "SELECT * FROM auctions WHERE category = '$clean_category' ORDER BY UNIX_TIMESTAMP(closing_time)";
+$query = "SELECT * FROM auctions WHERE category = '$clean_category'
+ ORDER BY UNIX_TIMESTAMP(closing_time)";
 $result = mysql_query($query,$connection);
 
 ?>
@@ -42,22 +43,24 @@ include 'private/sidenav.php';
   <h1 style="font-size:2em;"><?php echo $clean_category;?></h1>
   <?php 
 //start code here...
-while ($row = mysql_fetch_array($result)){
-  $auction_number = $row['auction_number'];
-  $query_images = "select * from auction_images where auction_number = '$auction_number'";
-  $images = mysql_query($query_images,$connection);
-
-  if(mysql_num_rows($images) > 0){
-    $image_array = mysql_fetch_array($images);
-    $image = $image_array['auction_number']."_".$image_array['image_number'].".jpg";
-  }
-  $auction_title = $row['title'];
-  $auction_area = $row['area'];
-  $auction_reserve = $row['reserve'];
-  $auction_highest_bid = $row['highest_bid'];
-  $auction_reserve_met = $row['reserve_met'];
-  $date_result = mysql_query("SELECT TIMEDIFF(closing_time,NOW()) FROM auctions
-WHERE auction_number = '$auction_number'");
+if(mysql_num_rows($result)>0){
+    while ($row = mysql_fetch_array($result)){
+      $auction_number = $row['auction_number'];
+      $query_images = "SELECT * FROM auction_images WHERE
+ auction_number = '$auction_number'";
+      $images = mysql_query($query_images,$connection);
+      
+      if(mysql_num_rows($images) > 0){
+	$image_array = mysql_fetch_array($images);
+	$image = $image_array['auction_number']."_".$image_array['image_number'].".jpg";
+      }
+      $auction_title = $row['title'];
+      $auction_area = $row['area'];
+      $auction_reserve = $row['reserve'];
+      $auction_highest_bid = $row['highest_bid'];
+      $auction_reserve_met = $row['reserve_met'];
+      $date_result = mysql_query("SELECT TIMEDIFF(closing_time,NOW()) FROM auctions
+      WHERE auction_number = '$auction_number'");
   $date_array = mysql_fetch_array($date_result);
   $auction_closing_time = timeToText($date_array[0]);
   $imagelocation = $config['images'];
@@ -101,7 +104,13 @@ echo $auction_highest_bid;
 </div><!-- end auctions -->
 <hr>
 <?php
-}//end while loop
+}}//end while loop and if statement
+else{
+?>
+<p>No auctions in this category</p>
+<p><a href="newauction.php">Would you like to start one</a></p>
+<?php
+}
 ?>
 
 </div>
