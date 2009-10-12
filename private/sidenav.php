@@ -23,10 +23,10 @@ if(!isset($_SESSION['auth']) || $_SESSION['auth'] != 'knownuser'){
 ?>
 <ul id="sideul">
 <li class="sideli"><a href="editdetails.php">Edit your details</a></li>
-<li class="sideli"><a href="feedback.php">My feedback</a></li>
+<li class="sideli"><a href="biddedon.php">Reciently bidded on</a></li>
 <li class="sideli"><a href="myauctions.php">My auctions</a></li>
-<li class="sideli"><a href="balance.php">My account balance</a></li>
-<li class="sideli"><a href="recentlyviewed.php">Reciently viewed</a></li>
+
+
 <li class="sideli"><a href="newauction.php">Start a new auction</a></li>
 <?php
    if(isset($_SESSION['admin']) && $_SESSION['admin'] == 1){

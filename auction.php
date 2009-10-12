@@ -72,11 +72,13 @@ echo "<h1 id=\"auctiontitle\">$title</h1>";
   echo "<div id=\"infobar\">";
 if($reserve_met == 0){
   echo "<div class=\"pricing\">Start Price: \$$reserve</div>";
-  echo "<span class=\"flag\"><img src=\"images/yellowflag.png\" alt=\"no reserve flag\"></span>";
+  echo "<span class=\"flag\"><img src=\"images/yellowflag.png\"
+ alt=\"no reserve flag\"></span>";
   echo "<span id=\"reserve\">No reserve</span>";
  }else{
   echo "<div class=\"pricing\">Highest Bid: \$$highest_bid</div>";
-  echo "<span class=\"flag\"><img src=\"images/redflag.png\" alt=\"reserve met flag\"></span>";
+  echo "<span class=\"flag\"><img src=\"images/redflag.png\" 
+alt=\"reserve met flag\"></span>";
     echo "<span id=\"reserve\">Reserve Met</span>";
 }
 echo "<span>Closes: $closing_time</span>";
@@ -86,22 +88,32 @@ echo "<div id=\"bidbar\">";
 if($reserve_met == 0){
   echo "<div class=\"pricing\">Starting bid: $";
 }else{
-  echo "<div class=\"pricing\">Min next bid: $";
+  echo "<div class=\"pricing\"><span class=\"buyspan\">Min next bid: $</span>";
 }
 ?>
 
-<input id="bidinput" type="text" name="bid" value="<?php echo $reserve > $highest_bid ? $reserve : $highest_bid + 1;?>" size="4"></div>
-<input id="auctionnumber" type="hidden" name="auction_number" value="<?php echo $auction_number;?>">
+<input id="bidinput" type="text" name="bid" 
+value="<?php echo $reserve > $highest_bid ? $reserve : $highest_bid + 1;?>" 
+size="4"></div>
+<input id="auctionnumber" type="hidden" name="auction_number" 
+value="<?php echo $auction_number;?>">
 <input type="submit" id="bidbutton" value="click here to bid">
 
-</div><!-- //bidbar -->
+</div>
 </form>
 <?php
-  if(isset($buynow)){
+/* If the current highest bid is more than the buy now price
+* do not display the buy now option*/
+$query_price = "SELECT highest_bid,buy_now FROM auctions 
+WHERE auction_number = '$auction_number'";
+$result_price = mysql_query($query_price,$connection);
+$array_price = mysql_fetch_array($result_price);
+if(isset($buynow) && ($array_price['buy_now'] > $array_price['highest_bid'])){
     ?><form action="buynow.php" method="post">
-<div id="buynowbar"><span>Buy Now Price $<?php echo $buynow;?>
-    </span><input type="submit" value="BuyNow" id="buynowbutton">
-<input type="hidden" value=<?php echo $auction_number;?></div></form>
+<div id="buynowbar"><span class="buyspan">Buy Now Price $<?php echo $buynow;?>
+   </span><input type="submit" value="BuyNow" id="buynowbutton">
+<input type="hidden" name="auction_number" 
+value="<?php echo $auction_number;?>"></div></form>
 <?php
   }?>
 <?php
@@ -111,15 +123,19 @@ if($reserve_met == 0){
 
 echo "<div class=\"auctioncontent\">";
 if(isset($images) && count($images) > 0){
-//for($x = 0; isset($images) && $x < count($images);$x++){
+
 echo "<div class=\"auctionimages\">";
 $imagedimensions = getimagesize($config['imagelocation'].$images[$x]);
-echo "<div id=\"auctionimage\"><img src=\"$imagelocation$images[0]\" id=\"image\" alt=\"auction image\"".imageResize($imagedimensions[0],$imagedimensions[1],250)."></div>";
+echo "<div id=\"auctionimage\"><img src=\"$imagelocation$images[0]\" 
+id=\"image\" alt=\"auction image\"".imageResize($imagedimensions[0],
+$imagedimensions[1],250)."></div>";
 ?>
 <?php 
 if(count($images) > 1){?>
-<div id="leftarrow" class="arrow"><img src="images/left-arrow.png" alt="left arrow" width="34" height="39"></div>
-<div id="rightarrow" class="arrow"><img src="images/right-arrow.png" alt="right arrow" width="34" height="39"></div>
+<div id="leftarrow" class="arrow"><img src="images/left-arrow.png"
+ alt="left arrow" width="34" height="39"></div>
+<div id="rightarrow" class="arrow"><img src="images/right-arrow.png" 
+alt="right arrow" width="34" height="39"></div>
   <?php } ?>
 <?php
 echo "</div>";
@@ -131,7 +147,8 @@ echo "$content</div>";
 <h2>Bid history</h2>
 <div id="bidhistory">
 <?php
-  $bidders_result = mysql_query("SELECT * FROM auction_bidders where auction_number = '$auction_number' ORDER BY bid DESC",$connection);
+  $bidders_result = mysql_query("SELECT * FROM auction_bidders 
+WHERE auction_number = '$auction_number' ORDER BY bid DESC",$connection);
 while($row = mysql_fetch_array($bidders_result)){
   echo "<div class=\"historyrow\">";
     echo "\$".$row['bid']."  ";

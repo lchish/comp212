@@ -28,16 +28,16 @@ include 'private/topnav.php';
 include 'private/sidenav.php';
 ?>
 <div id="content">
-<h1>Your auctions</h1>
+<h1>Current auctions</h1>
 <?php
 if(mysql_num_rows($result) > 0){
   echo "<ul id=\"myauctions\">";
   while($row = mysql_fetch_array($result)){
     $title = $row['title'];
     $num = $row['auction_number'];
-    echo "<li class=\"myauctionsli\" style=\"clear:both;\">$title";
-    echo "<span class=\"\"><a href=\"uploadimage.php?id=$num\">Upload image <a></span>";
-    echo "<span class = \"\"><a href=\"deleteauction.php?id=$num\"id=$num\">Delete auction</a></span></li>";
+    echo "<li class=\"myauctionsli\" style=\"clear:both;\">$title  ";
+    echo "<span class=\"\"><a href=\"uploadimage.php?id=$num\">Upload image </a></span>";
+    echo "<span class = \"\"><a href=\"deleteauction.php?id=$num\">Delete auction</a></span></li>";
   }
   echo "</ul>";
 }else{
@@ -45,6 +45,21 @@ if(mysql_num_rows($result) > 0){
   <p>You do not have any autions running at the moment</p>
   <p><a href="newauction.php" >Would you like to start one</a></p>
 <?php
+}
+?>
+<h2>Finished auctions</h2>
+<?php
+$finished = mysql_query("SELECT * FROM finished_auctions
+ WHERE seller_username = '$clean_username'",$connection);
+if(mysql_num_rows($finished) > 0){
+  echo "<ul id=\"myauctions\">";
+  while($row = mysql_fetch_array($finished)){
+    echo "<li style=\"clear:both;\"> Title: ".$row['title']."Winning bid: ".
+      $row['winning_bid']."Winning bidder: ".$row['winning_bidder']."</li>";
+  }  
+  echo "</ul>";
+}else{
+  echo "<p style=\"clear:both;\">None of your auctions have finished</p>";
 }
 ?>
 </div>

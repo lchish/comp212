@@ -17,23 +17,33 @@ h2{
     margin-right:1em;
 }
 #bidbar{
-    clear:left;
-    margin-top:.5em;
+    float:left;
+    width:auto;
+    margin-top:.7em;
 }
 #bidbutton{
     width: 130px;
     height: 21px;
     background: url(images/bid-button.png) top left no-repeat;
     border: 0px solid black;
-    text-indent: -200em;
+    font-size:0;
+}
+#buynowbar{
+    margin-left:2em;
+    margin-top:.7em;
+    float:left;
+    width:auto;
+}
+.buyspan{
+/*    padding-top:10em;*/
 }
 #buynowbutton{
-    margin-left:16em;
+    margin-left:2em;
     width: 124px;
     height: 25px;
     background: url(images/buynow-button.png) top left no-repeat;
     border: 0px solid black;
-    text-indent: -200em;
+    font-size:0;
 }
 #buynowbutton:hover{
     background-position: 0px -25px;
@@ -42,6 +52,8 @@ h2{
     background-position: 0px -21px;
 }
 #auctionerror{
+    clear:both;
+    float:left;
     margin:.1em 0 0  0;
     font-size: 1.5em;
     font-weight:bold;
