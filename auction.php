@@ -20,7 +20,11 @@ $querybidders = "SELECT * FROM auction_bidders WHERE auction_number = '$auction_
 $result = mysql_query($query,$connection);
 $resultimages = mysql_query($queryimages,$connection);
 $resultbidders = mysql_query($querybidders,$connection);
-
+//throw them back if auction not found
+if(mysql_num_rows($result) ==0){
+  header("Location: index.php");
+  exit();
+}
 $row = mysql_fetch_array($result);
 $x = 0;
 while($rowimages = mysql_fetch_array($resultimages)){

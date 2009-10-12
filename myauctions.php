@@ -35,9 +35,9 @@ if(mysql_num_rows($result) > 0){
   while($row = mysql_fetch_array($result)){
     $title = $row['title'];
     $num = $row['auction_number'];
-    echo "<li class=\"myauctionsli\" style=\"clear:both;\">$title  ";
-    echo "<span class=\"\"><a href=\"uploadimage.php?id=$num\">Upload image </a></span>";
-    echo "<span class = \"\"><a href=\"deleteauction.php?id=$num\">Delete auction</a></span></li>";
+    echo "<li class=\"myauctionsli\" style=\"clear:both;\">Title: $title  ";
+    echo "<span class=\"\"style=\"margin-left:1em;\"><a href=\"uploadimage.php?id=$num\">Upload image </a></span>";
+    echo "<span class = \"\" style=\"margin-left:2em;\"><a href=\"deleteauction.php?id=$num\">Delete auction</a></span></li>";
   }
   echo "</ul>";
 }else{

@@ -106,7 +106,8 @@ $date = $array['dateofcreation'];
 $hash = sha1($clean_username.$date);//hash should be impossible to break!
 
 $title = "Thank you for signing up to sell it";
-$message = "Thanks for signing up to complete the sign up process please click
+$message = "Thanks for signing up to complete the sign up process please 
+click 
 http://dev212.otago.ac.nz:8080/~lchisholm/assign2/verifyemail.php?userhash=$hash";
 
 if(mail($clean_email,$title,$message)){

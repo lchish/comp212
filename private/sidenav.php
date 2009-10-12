@@ -23,7 +23,7 @@ if(!isset($_SESSION['auth']) || $_SESSION['auth'] != 'knownuser'){
 ?>
 <ul id="sideul">
 <li class="sideli"><a href="editdetails.php">Edit your details</a></li>
-<li class="sideli"><a href="biddedon.php">Reciently bidded on</a></li>
+<li class="sideli"><a href="biddedon.php">Recently bidded on</a></li>
 <li class="sideli"><a href="myauctions.php">My auctions</a></li>
 
 

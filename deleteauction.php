@@ -20,8 +20,10 @@ if($_SESSION['admin'] != 1 && mysql_num_rows($result) != 1){
   exit();
 }
 mysql_query("DELETE FROM auctions WHERE auction_number = '$auction_number'");
-mysql_query("DELETE FROM auction_bidders WHERE auction_number = '$auction_number'");
-mysql_query("DELETE FROM auction_images WHERE auction_number = '$auction_number'");
+mysql_query("DELETE FROM auction_bidders 
+WHERE auction_number = '$auction_number'");
+mysql_query("DELETE FROM auction_images 
+WHERE auction_number = '$auction_number'");
 //unlink($config['imagelocation']."$auction_number_*"); //not too sure about this...
 header("Location: myauctions.php");
 ?>

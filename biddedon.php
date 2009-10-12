@@ -8,8 +8,8 @@ if(!isset($_SESSION['username'])){
 $connection = mysql_connect($config['host'],$config['username'],$config['password']);
 mysql_select_db($config['database'],$connection);
 $username = mysql_real_escape_string($_SESSION['username']);
-$query = "select auctions.title,auctions.auction_number,highest_bid FROM
- auctions,auction_bidders where 
+$query = "select auctions.title,auctions.auction_number,highest_bid,
+highest_bidder FROM auctions,auction_bidders where 
 auctions.auction_number = auction_bidders.auction_number and 
 bidder = 'administrator' group by title ";
 $result = mysql_query($query,$connection);
@@ -38,8 +38,14 @@ include 'private/sidenav.php';
     echo "<ul>";
     while($row = mysql_fetch_array($result)){
       echo "<li style=\"clear:left;font-size:12pt;\">
-Auction: <a href=\"auction.php?id=".$row['auction_number']."\">".$row['title'].
-	"</a>  Highest Bid:".$row['highest_bid']."</li>";
+Auction: <a href=\"auction.php?id=".$row['auction_number']."\">".
+$row['title']."</a>  Highest Bid:".$row['highest_bid'];
+      if($_SESSION['username'] != $row['highest_bidder']){
+	echo "  Not the highest bidder";
+      }else{
+	echo "  Currently leading auction";
+      }
+      echo "</li>";
     }
     echo "</ul>";
   }
