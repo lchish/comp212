@@ -46,7 +46,7 @@ $closing_date = $row['closing_time'];
 $date = mysql_query("SELECT TIMEDIFF(closing_time,NOW()) FROM auctions
 WHERE auction_number = '$auction_number'");
 $date_array = mysql_fetch_array($date);
-$closing_time = substr(timeToText($date_array[0]),0,7);
+$closing_time = timeToText($date_array[0]);
 $imagelocation = $config['images'];
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"

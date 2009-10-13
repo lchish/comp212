@@ -22,7 +22,6 @@ $result_price = mysql_query($query_price,$connection);
 $array_price = mysql_fetch_array($result_price);
 $seller_username = mysql_real_escape_string($array_price['seller_username']);
 
-
 $seller_email_address_array = mysql_fetch_array(mysql_query("SELECT email FROM
  userinfo,auctions WHERE seller_username = username AND 
  seller_username = '$seller_username'",$connection));
@@ -75,7 +74,7 @@ include 'private/sidenav.php';
 <div id="content">
 <p>Congratulations you have won the auction <strong><?php
   echo $title;?></strong> For: $<?php echo $purchase_price;?>
- Using buy Now</p>
+ Using Buy Now</p>
 <p><a href="mailto:<?php echo $seller_email_address;?>" >Please send an email to the seller to sort
  out payment details</a></p>
 </div>

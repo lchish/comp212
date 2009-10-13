@@ -47,7 +47,7 @@ WHERE auction_number = '$auction_number'");
 <div class="auctiontext"><p class="auctionparagraphlink">
 <a href="auction.php?id=<?php echo "$auction_number\">$auction_title";?></a></p>
 <p class="area"><?php echo $auction_area;?></p><p class="closinglater">
-<?php echo $auction_closing_time;?></p></div>
+<?php echo "Closes in: ".$auction_closing_time;?></p></div>
 <div class="reserve">
   <img src="
    <?php if($auction_reserve_met == 0){

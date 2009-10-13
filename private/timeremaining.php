@@ -22,23 +22,23 @@ function timeToText($time) {
 
   if($hours > ($HOURS_IN_DAY * $MINIMUM_DAYS_FOR_RETURN_MONTH)) // More than 3 weeks
     {
-      return round($hours/$DAYS_IN_MONTH/$HOURS_IN_DAY)." months remaining";
+      return round($hours/$DAYS_IN_MONTH/$HOURS_IN_DAY)." months ";
     }
   else if($hours > $HOURS_IN_DAY * $MINIMUM_DAYS_FOR_RETURN_WEEKS) // More than 5 days
     {
-      return round($hours/$HOURS_IN_DAY/$DAYS_IN_WEEK)." weeks remaining";
+      return round($hours/$HOURS_IN_DAY/$DAYS_IN_WEEK)." weeks ";
     }
   else if($hours > $HOURS_IN_DAY) // More than 24 hours
     {
-      return round($hours/$HOURS_IN_DAY)." days remaining";
+      return round($hours/$HOURS_IN_DAY)." days ";
     }
   else if($hours > $MINIMUM_HOURS_FOR_RETURN_HOURS) // More than 1 hour
     {
-      return $hours." hours remaining";
+      return $hours." hours ";
     }
   else // Less than 1 hour
     {
-      return $minutes." minutes remaining";
+      return $minutes." minutes ";
     }
 
 }
