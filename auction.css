@@ -57,6 +57,7 @@ h2{
     margin:.1em 0 0  0;
     font-size: 1.5em;
     font-weight:bold;
+    width:auto;
 }
 .historyrow{
     text-align:center;
@@ -71,22 +72,25 @@ h2{
     cursor:pointer;
 }
 #leftarrow{
+    width:auto;
     float:left;
     margin-left:3em;
  }
 #rightarrow{
+    width:auto;
     float:right;
     margin-right:5em;
 }
 #auctionimage{
-
     width:250px;
     height:250px;
 }
 #closing{
+    width:auto;
     clear:left;
     font-size:8pt;
-    color: grey;
+    color: #808080;
+    background-color:inherit;
     text-align:center;
 }
 .pricing{

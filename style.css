@@ -5,12 +5,14 @@ body{
     margin:0 auto;
     text-align:justify;
     background-color:#F3F3F3;
+    color:black;
 }
 
 img{
     border-style: none;
 }
 #bodydiv{
+    color:inherit;
     margin-top:1em;
     padding-top:1em;
     padding-left:1em;
@@ -34,6 +36,7 @@ img{
     float:left;
 }
 #greeting{
+    width:auto;
     float:left;
     margin-top:2em;
     margin-left:2em;
@@ -53,11 +56,13 @@ img{
 #home{
     margin-left:0;
     clear:left;
+    width:auto;
 }
 .toplinks{
     float:left;
     margin-left:.5em;
     list-style-type: none;
+    width:auto;
 }
 li{
     height:2em;
@@ -104,31 +109,38 @@ hr{
 .area{
     /*height:28px;*/
     clear:left;
+    width:auto;
 }
 .closingsoon{
     margin:0;
     /*height:28px;*/
     clear:left;
     color:red;
+    width:auto;
+    background-color:inherit;
 }
 .closinglater{
     margin:0;
     /*height:28px;*/
     clear:left;
+    width:auto;
 }
 .price{
     float:right;
+    width:auto;
 }
 .bids{
     clear:right;
     float:right;
     font-weight: bold;
+    width:auto;
 }
 .reserve{
     margin-left:.25em;
     margin-top:.75em;
     /*clear:right;*/
     float:right;
+    width:auto;
 }
 #categorieslist{
     width:auto;
@@ -139,6 +151,7 @@ hr{
     position:relative;
     height:7.5em;    
     margin-bottom:1em;
+    width:auto;
 }
 #loginbutton{
     width: 94px;
@@ -164,7 +177,7 @@ hr{
     width:8.5em;
     height:2.5em;
     margin-bottom:.5em;
-    /*clear:both;*/
+/*clear:both;*/
 }
 #sideul{
     padding-left:0px;
@@ -173,6 +186,7 @@ hr{
     list-style-type:none;
 }
 .sideli{
+    width:auto;
     clear:both;
     text-align:left;
     padding-left:0px;

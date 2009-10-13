@@ -71,10 +71,12 @@ Make administrator</a>  ";
   $auctions_result = mysql_query("SELECT auction_number,title FROM auctions
 ORDER BY auction_number",$connection);
 if(mysql_num_rows($auctions_result) > 0){
+  echo "<ul>";
   while($row = mysql_fetch_array($auctions_result)){
     echo "<li style=\"clear:left\">".$row['title'];
     echo "<a href=\"deleteauction.php?id=".$row['auction_number']."\">delete</a></li>";
   }
+  echo "</ul>";
 }
 ?>
 </div>
