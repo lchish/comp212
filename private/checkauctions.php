@@ -14,6 +14,7 @@ if(mysql_num_rows($finished_auctions) > 0){
     echo $row['title']." has finished. Dealing too\n";
     $auction_title = $row['title'];
     $purchase_price = $row['highest_bid'];
+    $clean_auction_number = mysql_real_escape_string($row['auction_number']);
     //always get seller email
     $clean_seller_username = mysql_real_escape_string($row['seller_username']
 						      );
@@ -21,13 +22,14 @@ if(mysql_num_rows($finished_auctions) > 0){
 userinfo WHERE username = '$clean_seller_username'", $connection));
     $seller_email = $seller_email_array['email'];
     //get buyer and seller email addresses,auction title
-    if($finished_auctions['reserve_met'] != 1){
+    if($row['reserve_met'] != 1){
       //send an email to the seller saying their auction was not won
       $seller_mail_title = "Your auction $auction_title was not won";
       $seller_mail_content = "Unfortunately your auction $auction_title 
 was not won by anyone. Please consider relisting it";
       mail($seller_email,$seller_mail_title,$seller_mail_content);
       $sold = 0;
+      $clean_buyer_username = "";
     }else{
       //get buyer email
     $clean_buyer_username = mysql_real_escape_string($row['highest_bidder']);
@@ -49,14 +51,14 @@ $buyer_email to finalise the purchase";
     //move and delete auction tables
     $query_move = "INSERT INTO finished_auctions(auction_number,title,
 winning_bidder,winning_bid,sold,seller_username,closing_time)
- VALUES ('$clean_auctionnumber','$auction_title','$clean_buyer_username','$purchase_price',
+ VALUES ('$clean_auction_number','$auction_title','$clean_buyer_username','$purchase_price',
 '$sold','$clean_seller_username',NOW())";
     $query_deleteauctions = "DELETE FROM auctions WHERE 
-auction_number = '$clean_auctionnumber' ";
+auction_number = '$clean_auction_number' ";
     $query_deleteimages = "DELETE FROM auction_images WHERE 
-auction_number = '$clean_auctionnumber'";
+auction_number = '$clean_auction_number'";
     $query_deletebids = "DELETE FROM auction_bidders WHERE 
-auction_number = '$clean_auctionnumber'";
+auction_number = '$clean_auction_number'";
     mysql_query($query_move,$connection);
     mysql_query($query_deleteauctions,$connection);
     mysql_query($query_deleteimages,$connection);
