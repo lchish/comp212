@@ -14,14 +14,14 @@ alt="title picture" width="300" height="70"></a></div>
 </ul>
 <ul id="buyingLinks" class="toplinks">
 <li><strong class="buying">Buying:</strong></li>
-<li><a href="watchlist.php">Watchlist</a></li>
-<li><a href="won.php">Won</a></li>
-<li><a href="lost.php">Lost</a></li>
+<li><a href="biddedon.php">Watchlist</a></li>
+<li><a href="biddedon.php">Won</a></li>
+<li><a href="biddedon.php">Lost</a></li>
 </ul>
 <ul id="sellingLinks" class="toplinks">
 <li><strong class="buying">Selling:</strong></li>
-<li><a href="selling.php">Items I'm selling</a></li>
-<li><a href="sold.php">Sold</a></li>
-<li><a href="unsold.php">Unsold</a></li>
+<li><a href="myauctions.php">Items I'm selling</a></li>
+<li><a href="myauctions.php">Sold</a></li>
+<li><a href="myauctions.php">Unsold</a></li>
 </ul>
 </div>

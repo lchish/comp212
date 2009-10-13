@@ -24,6 +24,6 @@ mysql_query("DELETE FROM auction_bidders
 WHERE auction_number = '$auction_number'");
 mysql_query("DELETE FROM auction_images 
 WHERE auction_number = '$auction_number'");
-//unlink($config['imagelocation']."$auction_number_*"); //not too sure about this...
+//todo: figure out how to delete images here
 header("Location: myauctions.php");
 ?>

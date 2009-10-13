@@ -63,11 +63,7 @@ if(isset($_GET['error'])){
 <option value="building">Building and renovation</option>
 <option value="servers">Broken Servers</option>
 <option value="assignments">Entended assignments</option>
-<option value="electrical">Electrical</option>
 <option value="farming">Farming</option>
-<option value="furniture">Furniture</option>
-<option value="instruments">Instruments</option>
-<option value="hookers">Hookers</option>
 <option value="lecturers">Lecturers</option>
 </select>
 <div id="categoryerr"></div>
