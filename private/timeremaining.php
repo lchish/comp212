@@ -16,9 +16,9 @@ function timeToText($time) {
   $HOURS_IN_DAY = 24;
   $DAYS_IN_WEEK = 7;
 
-  $MINIMUM_DAYS_FOR_RETURN_MONTH = 31;
-  $MINIMUM_DAYS_FOR_RETURN_WEEKS = 21;
-  $MINIMUM_HOURS_FOR_RETURN_HOURS = 24;
+  $MINIMUM_DAYS_FOR_RETURN_MONTH = 30;
+  $MINIMUM_DAYS_FOR_RETURN_WEEKS = 7;
+  $MINIMUM_HOURS_FOR_RETURN_HOURS = 1;
 
   if($hours > ($HOURS_IN_DAY * $MINIMUM_DAYS_FOR_RETURN_MONTH)) // More than 3 weeks
     {
@@ -38,7 +38,12 @@ function timeToText($time) {
     }
   else // Less than 1 hour
     {
-      return $minutes." minutes ";
+      if($minutes != 0){
+	return $minutes." minutes ";
+      }
+      else{
+	return "Less than 1 minute";
+      }
     }
 
 }
