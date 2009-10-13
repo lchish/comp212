@@ -16,8 +16,8 @@ if(isset($_POST['auction_number'])){
   header("Location: index.php");
   exit();
 }
-$query_price = "SELECT highest_bid,buy_now,seller_username,title FROM auctions 
-WHERE auction_number = '$clean_auctionnumber'";
+$query_price = "SELECT highest_bid,buy_now,seller_username,title FROM auctions
+ WHERE auction_number = '$clean_auctionnumber'";
 $result_price = mysql_query($query_price,$connection);
 $array_price = mysql_fetch_array($result_price);
 $seller_username = mysql_real_escape_string($array_price['seller_username']);
@@ -33,14 +33,23 @@ if($array_price['buy_now'] < $array_price['highest_bid']){
   exit();
 }
 //move and delete auction tables and send an email to the winner
-$query_move = "INSERT INTO finished_auctions(auction_number,title,winning_bidder,winning_bid,seller_username,closing_time)
- VALUES ('$clean_auctionnumber','$title','$clean_username','$purchase_price','$seller_username',NOW())";
-$query_deleteauctions = "DELETE FROM auctions WHERE auction_number = '$clean_auctionnumber' ";
-$query_deleteimages = "DELETE FROM auction_images WHERE auction_number = '$clean_auctionnumber'";
-$query_deletebids = "DELETE FROM auction_bidders WHERE auction_number = '$clean_auctionnumber'";
+$query_move = "INSERT INTO finished_auctions(auction_number,title,
+winning_bidder,winning_bid,seller_username,closing_time)
+ VALUES ('$clean_auctionnumber','$title','$clean_username','$purchase_price',
+'$seller_username',NOW())";
+$query_deleteauctions = "DELETE FROM auctions WHERE 
+auction_number = '$clean_auctionnumber' ";
+$query_deleteimages = "DELETE FROM auction_images WHERE 
+auction_number = '$clean_auctionnumber'";
+$query_deletebids = "DELETE FROM auction_bidders WHERE 
+auction_number = '$clean_auctionnumber'";
+mysql_query($query_move,$connection);
+mysql_query($query_deleteauctions,$connection);
+mysql_query($query_deleteimages,$connection);
+mysql_query($query_deletebids,$connection);
 
-$buyer_email_address_array = mysql_fetch_array(mysql_query("SELECT email FROM userinfo WHERE 
-username = '$clean_username'",$connection));
+$buyer_email_address_array = mysql_fetch_array(mysql_query("SELECT email FROM
+ userinfo WHERE username = '$clean_username'",$connection));
 $buyer_email_address = $buyer_email_address_array['email'];
 
 $buyer_email_title = "Congratulations on winning the auction $title";
@@ -75,8 +84,9 @@ include 'private/sidenav.php';
 <p>Congratulations you have won the auction <strong><?php
   echo $title;?></strong> For: $<?php echo $purchase_price;?>
  Using Buy Now</p>
-<p><a href="mailto:<?php echo $seller_email_address;?>" >Please send an email to the seller to sort
- out payment details</a></p>
+<p><a href="mailto:<?php echo $seller_email_address;?>" >Please send an
+ email to the seller to sort out payment details</a></p>
+<?php echo $sent;?>
 </div>
 </div>
 </body>
