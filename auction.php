@@ -154,6 +154,12 @@ echo "$content</div>";
 <h2>Bid history</h2>
 <div id="bidhistory">
 <?php
+  $bids_array = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM auction_bidders WHERE auction_number = '$auction_number'",$connection));
+    if($bids_array['COUNT(*)'] > 0){
+      echo "<div id=\"numbids\">".$bids_array['COUNT(*)']." bids </div>";
+    }
+
+
   $bidders_result = mysql_query("SELECT * FROM auction_bidders 
 WHERE auction_number = '$auction_number' ORDER BY bid DESC",$connection);
 while($row = mysql_fetch_array($bidders_result)){

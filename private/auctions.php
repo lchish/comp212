@@ -63,7 +63,12 @@ echo $auction_reserve;
 echo $auction_highest_bid;
 }
 ?></p>
-  <p class="bids"></p>
+  <p class="bids"><?php
+    $bids_array = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM auction_bidders WHERE auction_number = '$auction_number'",$connection));
+    if($bids_array['COUNT(*)'] > 0){
+      echo $bids_array['COUNT(*)']." bids ";
+    }
+?></p>
 </div><!-- end auctions -->
 <hr>
 <?php

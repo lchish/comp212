@@ -21,7 +21,8 @@ if(strlen($_POST['category']) >  0){
  }else{
   $error = $error."Please enter a category ";
  }
-if(strlen($_POST['reserve']) > 0 && strlen($_POST['reserve']) < 7){
+if(strlen($_POST['reserve']) > 0 && strlen($_POST['reserve']) < 7 &&
+   $POST['reserve'] != '0'){
   $clean_reserve = mysql_real_escape_string($_POST['reserve']);
   $int_reserve = (int)$clean_reserve;
 }else{
@@ -35,7 +36,8 @@ if(isset($_POST['content'])){
   }
 }
 if(isset($_POST['buynow'])){
-  if(strlen($_POST['buynow']) < 7 && strlen($_POST['buynow']) > 0){
+  if(strlen($_POST['buynow']) < 7 && strlen($_POST['buynow']) > 0
+&& $_POST['buynow'] != '0'){
     $clean_buynow = mysql_real_escape_string($_POST['buynow']);
     $int_buynow = (int)$clean_buynow;
   }else{
