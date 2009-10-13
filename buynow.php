@@ -34,9 +34,9 @@ if($array_price['buy_now'] < $array_price['highest_bid']){
 }
 //move and delete auction tables and send an email to the winner
 $query_move = "INSERT INTO finished_auctions(auction_number,title,
-winning_bidder,winning_bid,seller_username,closing_time)
+winning_bidder,winning_bid,sold,seller_username,closing_time)
  VALUES ('$clean_auctionnumber','$title','$clean_username','$purchase_price',
-'$seller_username',NOW())";
+1,'$seller_username',NOW())";
 $query_deleteauctions = "DELETE FROM auctions WHERE 
 auction_number = '$clean_auctionnumber' ";
 $query_deleteimages = "DELETE FROM auction_images WHERE 

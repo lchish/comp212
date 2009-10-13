@@ -101,8 +101,9 @@ value="<?php echo $reserve > $highest_bid ? $reserve : $highest_bid + 1;?>"
 size="4"></div>
 <input id="auctionnumber" type="hidden" name="auction_number" 
 value="<?php echo $auction_number;?>">
+  <?php if(isset($_SESSION['auth']) && $_SESSION['auth'] == 'knownuser'){?>
 <input type="submit" id="bidbutton" value="click here to bid">
-
+   <?php }?>
 </div>
 </form>
 <?php
@@ -115,7 +116,9 @@ $array_price = mysql_fetch_array($result_price);
 if(isset($buynow) && ($array_price['buy_now'] > $array_price['highest_bid'])){
     ?><form action="buynow.php" method="post">
 <div id="buynowbar"><span class="buyspan">Buy Now Price $<?php echo $buynow;?>
-   </span><input type="submit" value="BuyNow" id="buynowbutton">
+  </span><?php if(isset($_SESSION['auth']) && 
+$_SESSION['auth'] == 'knownuser'){?>
+    <input type="submit" value="BuyNow" id="buynowbutton"><?php }?>
 <input type="hidden" name="auction_number" 
 value="<?php echo $auction_number;?>"></div></form>
 <?php

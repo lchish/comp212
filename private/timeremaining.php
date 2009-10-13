@@ -1,15 +1,13 @@
 <?php
   /* This code is taken from
    * http://www.codingforums.com/archive/index.php/t-146115.html
-   * had a few bugs (missing $variablenames)
+   * had a few bugs (missing $variablenames etc)
    * hoping this isn't a problem.
    */
 
 function timeToText($time) {
-
   $t = explode(":",$time);
   $hours = $t[0];
-
   $minutes = $t[1];
 
   $DAYS_IN_MONTH = 30;
@@ -45,6 +43,5 @@ function timeToText($time) {
 	return "Less than 1 minute";
       }
     }
-
 }
 ?>
