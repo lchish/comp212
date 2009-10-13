@@ -30,14 +30,22 @@ include 'private/sidenav.php';
 <div id="content">
 <h1>Current auctions</h1>
 <?php
+  if(isset($_GET['error'])){
+    echo "<p><strong>Error: ".$_GET['error']."</strong></p>";
+  }
+?>
+<?php
 if(mysql_num_rows($result) > 0){
-  echo "<ul id=\"myauctions\">";
+  echo "<ul class=\"myauctions\">";
   while($row = mysql_fetch_array($result)){
     $title = $row['title'];
     $num = $row['auction_number'];
-    echo "<li class=\"myauctionsli\" style=\"clear:both;\">Title: $title  ";
-    echo "<span class=\"\"style=\"margin-left:1em;\"><a href=\"uploadimage.php?id=$num\">Upload image </a></span>";
-    echo "<span class = \"\" style=\"margin-left:2em;\"><a href=\"deleteauction.php?id=$num\">Delete auction</a></span></li>";
+    echo "<li class=\"myauctionsli\" style=\"clear:both;\">Title: 
+<a href=\"auction.php?id=$num\">$title  </a>";
+    echo "<span class=\"\"style=\"margin-left:1em;\">
+<a href=\"uploadimage.php?id=$num\">Upload image </a></span>";
+    echo "<span class = \"\" style=\"margin-left:2em;\">
+<a href=\"deleteauction.php?id=$num\">Delete auction</a></span></li>";
   }
   echo "</ul>";
 }else{
@@ -52,10 +60,16 @@ if(mysql_num_rows($result) > 0){
 $finished = mysql_query("SELECT * FROM finished_auctions
  WHERE seller_username = '$clean_username'",$connection);
 if(mysql_num_rows($finished) > 0){
-  echo "<ul id=\"myauctions\">";
+  echo "<ul class=\"myauctions\">";
   while($row = mysql_fetch_array($finished)){
-    echo "<li style=\"clear:both;\"> Title: ".$row['title']."Winning bid: ".
-      $row['winning_bid']."Winning bidder: ".$row['winning_bidder']."</li>";
+    if($row['sold'] == 1){
+    echo "<li style=\"clear:both;\"> Title: ".$row['title']." Winning bid: ".
+      $row['winning_bid']." Winning bidder: ".$row['winning_bidder']."</li>";
+    }
+    else{
+    echo "<li style=\"clear:both;\">Your auction <strong>".$row['title']."
+</strong> did not meet the reserve price. Please consider relisting it.</li>";
+    }
   }  
   echo "</ul>";
 }else{

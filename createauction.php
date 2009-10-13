@@ -22,7 +22,7 @@ if(strlen($_POST['category']) >  0){
   $error = $error."Please enter a category ";
  }
 if(strlen($_POST['reserve']) > 0 && strlen($_POST['reserve']) < 7 &&
-   $POST['reserve'] != '0'){
+   $_POST['reserve'] != '0'){
   $clean_reserve = mysql_real_escape_string($_POST['reserve']);
   $int_reserve = (int)$clean_reserve;
 }else{

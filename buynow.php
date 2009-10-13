@@ -86,7 +86,6 @@ include 'private/sidenav.php';
  Using Buy Now</p>
 <p><a href="mailto:<?php echo $seller_email_address;?>" >Please send an
  email to the seller to sort out payment details</a></p>
-<?php echo $sent;?>
 </div>
 </div>
 </body>
